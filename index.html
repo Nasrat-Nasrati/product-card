@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flip Glass Product Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --primary: #00c6ff;
+      --secondary: #0072ff;
+      --discount: #ff4d4d;
+      --text: #fff;
+      --radius: 16px;
+      --transition: 0.6s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1470&q=80") no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .flip-card {
+      width: 340px;
+      height: 460px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform var(--transition);
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      color: var(--text);
+      padding: 20px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .flip-card-front img {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .price-box {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .discount {
+      font-size: 1rem;
+      color: var(--discount);
+      margin-left: 8px;
+      text-decoration: line-through;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      justify-content: center;
+    }
+
+    .desc {
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .rating {
+      margin-bottom: 20px;
+    }
+
+    .rating i {
+      color: gold;
+      margin: 0 3px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .rating i:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      
+      <!-- Front Side -->
+      <div class="flip-card-front">
+        <img src="https://via.placeholder.com/340x200" alt="Product Image" />
+        <div class="title">Glass Flip Watch</div>
+        <div class="price-box">
+          $99 <span class="discount">$149</span>
+        </div>
+        <button class="btn">View Details</button>
+      </div>
+      
+      <!-- Back Side -->
+      <div class="flip-card-back">
+        <div class="title">More Info</div>
+        <div class="desc">
+          Elegant glass-style watch with premium build quality and amazing comfort. Best for modern lifestyle lovers.
+        </div>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <button class="btn">Add to Cart</button>
+      </div>
+	  </div>
+  </div>
+
+</body>
+</html>
